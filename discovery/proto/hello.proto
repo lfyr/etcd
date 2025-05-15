@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "etcd/discovery/proto";
+
+package  hello;
+
+service Greeter{
+  rpc SayHello(HelloRequest) returns (HelloReply) {}
+  rpc SayHi(HiRequest) returns (HiReply) {}
+}
+
+message HelloRequest {
+  string msg = 1;
+}
+
+message HelloReply {
+  string msg = 1;
+}
+
+message HiRequest {
+  string msg = 1;
+}
+
+message HiReply {
+  string msg = 1;
+}
+
+
+// protoc --proto_path=discovery/proto --go_out=discovery/proto --go_opt=paths=source_relative --go-grpc_out=discovery/proto --go-grpc_opt=paths=source_relative discovery/proto/hello.proto
